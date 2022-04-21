@@ -3,7 +3,7 @@ import CalendarBody from './components/CalendarBody';
 import CalendarHeader from './components/CalendarHeader';
 import './App.css';
 
-function App() {
+function Calendar() {
   const [year, setYear] = useState(0);
   const [month, setMonth] = useState(0);
 
@@ -29,4 +29,4 @@ function App() {
   );
 }
 
-export default App;
+export default Calendar;
