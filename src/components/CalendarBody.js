@@ -60,7 +60,7 @@ export default function CalendarBody({
   );
 }
 
-const Body = styled.section`
+const Body = styled.main`
   padding-top: 16px;
 `;
 
