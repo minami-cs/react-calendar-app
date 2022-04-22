@@ -54,20 +54,19 @@ export default function Calendar() {
 
   return (
     <Wrapper>
-      <Content>
-        <CalendarHeader year={year} month={month} />
-        <CalendarBody
-          prevDates={dates.prevMonth}
-          thisDates={dates.thisMonth}
-          nexDates={dates.nextMonth}
-        />
-      </Content>
+      <CalendarHeader year={year} month={month} />
+      <CalendarBody
+        prevDates={dates.prevMonth}
+        thisDates={dates.thisMonth}
+        nexDates={dates.nextMonth}
+        year={year}
+        month={month}
+      />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
   text-align: center;
+  position: relative;
 `;
-
-const Content = styled.main``;

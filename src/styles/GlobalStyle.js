@@ -29,17 +29,13 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
   button {
+    font-family: 'SpoqaHanSansNeo-Regular';
     background-color: transparent;
     outline: none;
     border: 0;
     &:hover {
       cursor: pointer;
     }
-  }
-  html, body {
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
   }
   a {
     text-decoration: none;

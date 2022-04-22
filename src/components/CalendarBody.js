@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import NotThisMonthDate from './NotThisMonthDate';
 import ThisMonthDate from './ThisMonthDate';
 import Weekday from './Weekday';
 
-export default function CalendarBody({ prevDates, thisDates, nextDates }) {
+export default function CalendarBody({
+  prevDates,
+  thisDates,
+  nextDates,
+  year,
+  month,
+}) {
   const WEEK = ['일', '월', '화', '수', '목', '금', '토'];
+  const [day, setDay] = useState('');
+
+  const getThisDay = (year, month, date) => {
+    const DATE = new Date(year, month - 1, date);
+    const DAY = DATE.getDay();
+    setDay(WEEK[DAY]);
+  };
 
   return (
     <Body>
@@ -24,7 +37,16 @@ export default function CalendarBody({ prevDates, thisDates, nextDates }) {
         {thisDates &&
           (thisDates.length > 0
             ? thisDates.map(thisDate => {
-                return <ThisMonthDate key={thisDate} date={thisDate} />;
+                return (
+                  <ThisMonthDate
+                    key={thisDate}
+                    year={year}
+                    month={month}
+                    date={thisDate}
+                    day={day}
+                    getThisDay={getThisDay}
+                  />
+                );
               })
             : null)}
         {nextDates &&
@@ -39,7 +61,7 @@ export default function CalendarBody({ prevDates, thisDates, nextDates }) {
 }
 
 const Body = styled.section`
-  padding-top: 20px;
+  padding-top: 16px;
 `;
 
 const Weekdays = styled.div`
