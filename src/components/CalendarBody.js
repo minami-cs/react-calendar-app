@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Weekday from './Weekday';
 import NotThisMonthDate from './NotThisMonthDate';
 import ThisMonthDate from './ThisMonthDate';
-import Weekday from './Weekday';
 
 export default function CalendarBody({
   prevDates,
