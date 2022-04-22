@@ -6,4 +6,8 @@ export default function ThisMonthDate({ date }) {
 
 const Date = styled.div`
   height: 180px;
+
+  &:nth-child(7n + 1) {
+    color: ${({ theme }) => theme.sundayColor};
+  }
 `;

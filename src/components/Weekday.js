@@ -6,4 +6,8 @@ export default function Weekday({ day }) {
 
 const Day = styled.div`
   height: 30px;
+
+  &:first-child {
+    color: ${({ theme }) => theme.sundayColor};
+  }
 `;
