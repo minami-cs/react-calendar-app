@@ -1,3 +1,9 @@
+import styled from 'styled-components';
+
 export default function Weekday({ day }) {
-  return <div className="weekday">{day}</div>;
+  return <Day>{day}</Day>;
 }
+
+const Day = styled.div`
+  height: 30px;
+`;
