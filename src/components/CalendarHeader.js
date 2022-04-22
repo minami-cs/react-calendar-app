@@ -24,6 +24,7 @@ const Nav = styled.nav`
 
 const ThisMonth = styled.h1`
   font-size: 2.5rem;
+  font-weight: 600;
   padding-left: 50px;
 `;
 
