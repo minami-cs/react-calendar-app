@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import CalendarBody from './components/CalendarBody';
 import CalendarHeader from './components/CalendarHeader';
-import './App.css';
 
-function Calendar() {
+export default function Calendar() {
   const [year, setYear] = useState(0);
   const [month, setMonth] = useState(0);
   const [dates, setDates] = useState({});
@@ -53,17 +53,21 @@ function Calendar() {
   }, []);
 
   return (
-    <div className="wrapper">
-      <main className="content">
+    <Wrapper>
+      <Content>
         <CalendarHeader year={year} month={month} />
         <CalendarBody
-          prevDates={dates['prevMonth']}
-          thisDates={dates['thisMonth']}
-          nexDates={dates['nextMonth']}
+          prevDates={dates.prevMonth}
+          thisDates={dates.thisMonth}
+          nexDates={dates.nextMonth}
         />
-      </main>
-    </div>
+      </Content>
+    </Wrapper>
   );
 }
 
-export default Calendar;
+const Wrapper = styled.div`
+  text-align: center;
+`;
+
+const Content = styled.main``;
