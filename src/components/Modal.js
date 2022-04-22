@@ -1,14 +1,27 @@
 import styled from 'styled-components';
 
-export default function Modal({ toggleModal, month, date, day }) {
+export default function Modal({
+  month,
+  date,
+  day,
+  toggleModal,
+  getNewSchedule,
+}) {
+  const submitSchedule = () => {
+    toggleModal();
+  };
+
   return (
     <ModalWrapper>
       <ModalContent>
         <ModalTitle>
           {month}월 {date}일({day})
         </ModalTitle>
-        <ModalInput placeholder="일정을 입력해주세요" />
-        <ModalButton type="button" onClick={toggleModal}>
+        <ModalInput
+          placeholder="일정을 입력해주세요"
+          onChange={getNewSchedule}
+        />
+        <ModalButton type="button" onClick={submitSchedule}>
           확인
         </ModalButton>
       </ModalContent>
