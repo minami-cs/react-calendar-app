@@ -8,12 +8,8 @@ export default function Calendar() {
   const [month, setMonth] = useState(0);
   const [dates, setDates] = useState({});
 
-  const getDate = () => {
-    return new Date();
-  };
-
-  const getThisDates = () => {
-    const DATE = getDate();
+  const getCalendarDates = () => {
+    const DATE = new Date();
     const YEAR = DATE.getFullYear();
     const MONTH = DATE.getMonth();
     const PREVLASTDATE = new Date(YEAR, MONTH, 0);
@@ -43,8 +39,8 @@ export default function Calendar() {
   };
 
   useEffect(() => {
-    const DATES = getThisDates();
-    const DATE = getDate();
+    const DATES = getCalendarDates();
+    const DATE = new Date();
     const YEAR = DATE.getFullYear();
     const MONTH = DATE.getMonth();
     setYear(YEAR);
