@@ -1,23 +1,40 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { WEEKDAY, DayType } from '../utils/week';
 import Modal from './Modal';
 
-export default function ThisMonthDate({ year, month, date, day, getThisDay }) {
+type ThisMonthDateType = {
+  year: number;
+  month: number;
+  date: number;
+};
+
+export default function ThisMonthDate({
+  year,
+  month,
+  date,
+}: ThisMonthDateType) {
   const [isOpen, setIsOpen] = useState(false);
-  const [timer, setTimer] = useState();
+  const [timer, setTimer] = useState<ReturnType<typeof setTimeout>>();
   const [tempSchedule, setTempSchedule] = useState('');
   const [schedule, setSchedule] = useState('');
+  const [day, setDay] = useState<DayType>('' as DayType);
 
-  const toggleModal = (year, month, date) => {
+  const getThisDay = (year: number, month: number, date: number) => {
+    const DATE: Date = new Date(year, month - 1, date);
+    const DAY = DATE.getDay();
+    setDay(WEEKDAY[DAY] as DayType);
+  };
+
+  const toggleModal = (year: number, month: number, date: number) => {
     getThisDay(year, month, date);
     setIsOpen(!isOpen);
     setSchedule(tempSchedule);
   };
-
   // 입력값 debounce 처리하기
-  const getNewSchedule = e => {
+  const getNewSchedule = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (timer) clearTimeout(timer);
-    const newTimer = setTimeout(() => {
+    const newTimer: ReturnType<typeof setTimeout> = setTimeout(() => {
       setTempSchedule(e.target.value);
     }, 500);
     setTimer(newTimer);
@@ -34,15 +51,15 @@ export default function ThisMonthDate({ year, month, date, day, getThisDay }) {
           getNewSchedule={getNewSchedule}
         />
       )}
-      <Date onClick={() => toggleModal(year, month, date)}>
+      <DateWrapper onClick={() => toggleModal(year, month, date)}>
         {date}
         <Schedules>{schedule && <Schedule>{schedule}</Schedule>}</Schedules>
-      </Date>
+      </DateWrapper>
     </>
   );
 }
 
-const Date = styled.div`
+const DateWrapper = styled.div`
   height: 180px;
   padding-top: 8px;
   border-bottom: 1px solid ${({ theme }) => theme.borderColor};

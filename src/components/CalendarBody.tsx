@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import Weekday from './Weekday';
 import NotThisMonthDate from './NotThisMonthDate';
 import ThisMonthDate from './ThisMonthDate';
+import { WEEKDAY } from '../utils/week';
 
 type BodyType = {
   prevDates?: number[];
@@ -12,10 +12,6 @@ type BodyType = {
   month: number;
 };
 
-const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'] as const;
-
-type DayType = keyof typeof WEEKDAY;
-
 export default function CalendarBody({
   prevDates,
   thisDates,
@@ -23,19 +19,10 @@ export default function CalendarBody({
   year,
   month,
 }: BodyType) {
-  const WEEK: string[] = ['일', '월', '화', '수', '목', '금', '토'];
-  const [day, setDay] = useState<DayType>('' as DayType);
-
-  const getThisDay = (year: number, month: number, date: number) => {
-    const DATE: Date = new Date(year, month - 1, date);
-    const DAY = DATE.getDay();
-    setDay(WEEK[DAY] as DayType);
-  };
-
   return (
     <Body>
       <Weekdays>
-        {WEEK.map((day, idx) => {
+        {WEEKDAY.map((day, idx) => {
           return <Weekday day={day} key={idx} />;
         })}
       </Weekdays>
@@ -55,8 +42,6 @@ export default function CalendarBody({
                     year={year}
                     month={month}
                     date={thisDate}
-                    day={day}
-                    getThisDay={getThisDay}
                   />
                 );
               })
