@@ -12,6 +12,10 @@ type BodyType = {
   month: number;
 };
 
+const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'] as const;
+
+type DayType = keyof typeof WEEKDAY;
+
 export default function CalendarBody({
   prevDates,
   thisDates,
@@ -20,12 +24,12 @@ export default function CalendarBody({
   month,
 }: BodyType) {
   const WEEK: string[] = ['일', '월', '화', '수', '목', '금', '토'];
-  const [day, setDay] = useState<string>('');
+  const [day, setDay] = useState<DayType>('' as DayType);
 
   const getThisDay = (year: number, month: number, date: number) => {
     const DATE: Date = new Date(year, month - 1, date);
     const DAY = DATE.getDay();
-    setDay(WEEK[DAY]);
+    setDay(WEEK[DAY] as DayType);
   };
 
   return (
