@@ -15,18 +15,18 @@ export default function Calendar() {
   const [dates, setDates] = useState<DatesType>({});
 
   const getCalendarDates = () => {
-    const DATE = new Date();
+    const DATE: Date = new Date();
     const YEAR = DATE.getFullYear();
     const MONTH = DATE.getMonth();
-    const PREVLASTDATE = new Date(YEAR, MONTH, 0);
-    const THISLASTDATE = new Date(YEAR, MONTH + 1, 0);
+    const PREVLASTDATE: Date = new Date(YEAR, MONTH, 0);
+    const THISLASTDATE: Date = new Date(YEAR, MONTH + 1, 0);
     const PREVLASTWEEKDAY = PREVLASTDATE.getDay();
     const THISLASTWEEKDAY = THISLASTDATE.getDay();
     const PREVLAST = PREVLASTDATE.getDate();
     const THISLAST = THISLASTDATE.getDate();
-    const PREVMONTH = [];
-    const THISMONTH = [];
-    const NEXTMONTH = [];
+    const PREVMONTH: number[] = [];
+    const THISMONTH: number[] = [];
+    const NEXTMONTH: number[] = [];
 
     if (PREVLASTWEEKDAY < 6) {
       for (let i = PREVLASTWEEKDAY; i >= 0; i--) {
@@ -46,7 +46,7 @@ export default function Calendar() {
 
   useEffect(() => {
     const DATES = getCalendarDates();
-    const DATE = new Date();
+    const DATE: Date = new Date();
     const YEAR = DATE.getFullYear();
     const MONTH = DATE.getMonth();
     setYear(YEAR);
