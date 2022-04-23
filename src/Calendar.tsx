@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import CalendarBody from './components/CalendarBody';
 import CalendarHeader from './components/CalendarHeader';
 
+interface DatesType {
+  prevMonth?: number[];
+  thisMonth?: number[];
+  nextMonth?: number[];
+}
+
 export default function Calendar() {
-  const [year, setYear] = useState(0);
-  const [month, setMonth] = useState(0);
-  const [dates, setDates] = useState({});
+  const [year, setYear] = useState<number>(0);
+  const [month, setMonth] = useState<number>(0);
+  const [dates, setDates] = useState<DatesType>({});
 
   const getCalendarDates = () => {
     const DATE = new Date();
@@ -54,7 +60,7 @@ export default function Calendar() {
       <CalendarBody
         prevDates={dates.prevMonth}
         thisDates={dates.thisMonth}
-        nexDates={dates.nextMonth}
+        nextDates={dates.nextMonth}
         year={year}
         month={month}
       />
