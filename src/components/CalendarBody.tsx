@@ -23,7 +23,7 @@ export default function CalendarBody({
   const [day, setDay] = useState<string>('');
 
   const getThisDay = (year: number, month: number, date: number) => {
-    const DATE = new Date(year, month - 1, date);
+    const DATE: Date = new Date(year, month - 1, date);
     const DAY = DATE.getDay();
     setDay(WEEK[DAY]);
   };
