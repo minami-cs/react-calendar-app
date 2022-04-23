@@ -1,7 +1,11 @@
-import React from 'react';
 import styled from 'styled-components';
 
-export default function CalendarHeader({ year, month }) {
+type HeaderType = {
+  year: number;
+  month: number;
+};
+
+export default function CalendarHeader({ year, month }: HeaderType) {
   return (
     <Header>
       <Nav>
