@@ -1,4 +1,10 @@
-# React로 캘린더 구현하기
+# React로 캘린더를 구현한 프로젝트
+
+## 사용 기술
+
+- React v18
+- TypeScript v4+
+- Styled-Components
 
 ## 구현 사항
 
