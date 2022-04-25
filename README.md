@@ -27,3 +27,9 @@
 ![modal2](https://user-images.githubusercontent.com/66506477/164748016-e7f2d2e2-6622-456c-8ed3-53137e928c62.gif)
 
 - 모달창에서 일정을 입력 후 확인 버튼을 누르면 입력한 내용이 해당 일자에 보이도록 구현
+
+### 4. 이전 혹은 다음 달로 이동
+
+![movemonth](https://user-images.githubusercontent.com/66506477/165054839-76b3d68a-c2cb-4e67-a164-e4e62b98b0b5.gif)
+
+- 화살표 버튼을 눌러서 각각 이전 혹은 다음 달로 이동하는 기능 구현
