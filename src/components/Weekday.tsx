@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export default function Weekday({ day }) {
+type WeekdayType = {
+  day: string;
+};
+
+export default function Weekday({ day }: WeekdayType) {
   return <Day>{day}</Day>;
 }
 
