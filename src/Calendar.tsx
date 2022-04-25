@@ -14,12 +14,30 @@ export default function Calendar() {
   const [month, setMonth] = useState<number>(0);
   const [dates, setDates] = useState<DatesType>({});
 
-  const getCalendarDates = () => {
+  const getThisMonthDates = () => {
     const DATE: Date = new Date();
-    const YEAR = DATE.getFullYear();
-    const MONTH = DATE.getMonth();
-    const PREVLASTDATE: Date = new Date(YEAR, MONTH, 0);
-    const THISLASTDATE: Date = new Date(YEAR, MONTH + 1, 0);
+    return DATE;
+  };
+
+  const goToPrevMonth = () => {
+    if (month <= 12) setMonth(month - 1);
+    if (month === 1) {
+      setMonth(12);
+      setYear(year - 1);
+    }
+  };
+
+  const goToNextMonth = () => {
+    if (month < 12) setMonth(month + 1);
+    if (month === 12) {
+      setMonth(1);
+      setYear(year + 1);
+    }
+  };
+
+  const getCalendarDates = (year: number, month: number) => {
+    const PREVLASTDATE: Date = new Date(year, month, 0);
+    const THISLASTDATE: Date = new Date(year, month + 1, 0);
     const PREVLASTWEEKDAY = PREVLASTDATE.getDay();
     const THISLASTWEEKDAY = THISLASTDATE.getDay();
     const PREVLAST = PREVLASTDATE.getDate();
@@ -45,18 +63,26 @@ export default function Calendar() {
   };
 
   useEffect(() => {
-    const DATES = getCalendarDates();
-    const DATE: Date = new Date();
+    const DATE = getThisMonthDates();
     const YEAR = DATE.getFullYear();
     const MONTH = DATE.getMonth();
     setYear(YEAR);
     setMonth(MONTH + 1);
-    setDates(DATES);
   }, []);
+
+  useEffect(() => {
+    const DATES = getCalendarDates(year, month);
+    setDates(DATES);
+  }, [year, month]);
 
   return (
     <Wrapper>
-      <CalendarHeader year={year} month={month} />
+      <CalendarHeader
+        year={year}
+        month={month}
+        goToPrevMonth={goToPrevMonth}
+        goToNextMonth={goToNextMonth}
+      />
       <CalendarBody
         prevDates={dates.prevMonth}
         thisDates={dates.thisMonth}
