@@ -15,7 +15,6 @@ export default function ThisMonthDate({
   date,
 }: ThisMonthDateType) {
   const [isOpen, setIsOpen] = useState(false);
-  const [timer, setTimer] = useState<ReturnType<typeof setTimeout>>();
   const [tempSchedule, setTempSchedule] = useState('');
   const [schedule, setSchedule] = useState('');
   const [day, setDay] = useState<DayType>('' as DayType);
@@ -31,13 +30,9 @@ export default function ThisMonthDate({
     setIsOpen(!isOpen);
     setSchedule(tempSchedule);
   };
-  // 입력값 debounce 처리하기
+
   const getNewSchedule = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (timer) clearTimeout(timer);
-    const newTimer: ReturnType<typeof setTimeout> = setTimeout(() => {
-      setTempSchedule(e.target.value);
-    }, 500);
-    setTimer(newTimer);
+    setTempSchedule(e.target.value);
   };
 
   return (
