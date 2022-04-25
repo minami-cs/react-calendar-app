@@ -1,14 +1,25 @@
 import styled from 'styled-components';
+import { DayType } from '../utils/week';
+
+type ModalType = {
+  year: number;
+  month: number;
+  date: number;
+  day: DayType;
+  toggleModal: (year: number, month: number, date: number) => void;
+  getNewSchedule: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
 export default function Modal({
+  year,
   month,
   date,
   day,
   toggleModal,
   getNewSchedule,
-}) {
+}: ModalType) {
   const submitSchedule = () => {
-    toggleModal();
+    toggleModal(year, month, date);
   };
 
   return (

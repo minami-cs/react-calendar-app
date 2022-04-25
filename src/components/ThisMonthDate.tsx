@@ -44,10 +44,11 @@ export default function ThisMonthDate({
     <>
       {isOpen && (
         <Modal
-          toggleModal={toggleModal}
+          year={year}
           month={month}
           date={date}
           day={day}
+          toggleModal={toggleModal}
           getNewSchedule={getNewSchedule}
         />
       )}
