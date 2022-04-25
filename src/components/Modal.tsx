@@ -26,7 +26,7 @@ export default function Modal({
     <ModalWrapper>
       <ModalContent>
         <ModalTitle>
-          {month}월 {date}일({day})
+          {month}월 {date}일 ({day.toString()})
         </ModalTitle>
         <ModalInput
           placeholder="일정을 입력해주세요"
