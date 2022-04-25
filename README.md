@@ -21,7 +21,6 @@
 ![modal1](https://user-images.githubusercontent.com/66506477/164747475-ab4b30ac-e5fd-4ae1-bfc2-6781558bb54d.gif)
 
 - 각 일자 칸을 클릭하면 일정을 입력할 수 있는 모달창이 나타나도록 구현
-- 일정 입력시 `debounce`를 적용하여 500ms 이후에 입력한 사항이 저장되도록 구현
 
 ### 3. 일정 확인
 
