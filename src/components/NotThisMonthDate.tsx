@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export default function NotThisMonthDate({ date }) {
+type NotThisMonthDateType = {
+  date: number;
+};
+
+export default function NotThisMonthDate({ date }: NotThisMonthDateType) {
   return <Date>{date}</Date>;
 }
 
